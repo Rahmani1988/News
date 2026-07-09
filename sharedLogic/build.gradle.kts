@@ -34,10 +34,27 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            // Network
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+
+            // DI (Core Only)
+            implementation(libs.koin.core)
+
+            // Lifecycle Core (This allows you to write actual multiplatform ViewModels)
+            // Note: Make sure libs.androidx.lifecycle.runtimeCompose points to the core Multiplatform Lifecycle artifact in your TOML if you use it here.
+            // Usually, for commonMain ViewModels, you want: "androidx.lifecycle:lifecycle-viewmodel"
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp) // Engine for Android
+            implementation(libs.koin.android)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin) // Engine for iOS
         }
     }
 }
