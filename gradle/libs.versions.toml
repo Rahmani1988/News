@@ -18,7 +18,7 @@ skie = "0.10.13"
 ktor = "3.5.1"
 koin = "4.2.2"
 navigationCompose = "2.9.8"
-composeAndroidX = "1.7.8"
+composeAndroidX = "1.4.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
