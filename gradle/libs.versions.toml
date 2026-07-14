@@ -19,6 +19,9 @@ ktor = "3.5.1"
 koin = "4.2.2"
 navigationCompose = "2.9.8"
 composeAndroidX = "1.4.0"
+kotlinStdlib = "2.4.0"
+runner = "1.5.2"
+core = "1.5.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -53,6 +56,9 @@ androidx-compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics", ver
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeAndroidX" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "composeAndroidX" }
 androidx-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeAndroidX" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
 
 
 [plugins]
@@ -64,3 +70,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 touchlab-skie = { id = "co.touchlab.skie", version.ref = "skie" }
+android-lint = { id = "com.android.lint", version.ref = "agp" }

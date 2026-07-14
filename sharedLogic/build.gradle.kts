@@ -35,9 +35,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // Network
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
+            api(project(":core:network"))
 
             // DI (Core Only)
             implementation(libs.koin.core)
@@ -50,11 +48,9 @@ kotlin {
             implementation(libs.kotlin.test)
         }
         androidMain.dependencies {
-            implementation(libs.ktor.client.okhttp) // Engine for Android
             implementation(libs.koin.android)
         }
         iosMain.dependencies {
-            implementation(libs.ktor.client.darwin) // Engine for iOS
         }
     }
 }

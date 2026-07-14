@@ -30,3 +30,9 @@ dependencyResolutionManagement {
 
 include(":androidApp")
 include(":sharedLogic")
+
+// Core modules
+include(":core:network")
+include(":core:model")
+
+// Feature modules
