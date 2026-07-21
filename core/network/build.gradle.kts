@@ -1,9 +1,12 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.android.lint)
+    alias(libs.plugins.buildkonfig)
 }
 
 kotlin {
@@ -34,10 +37,13 @@ kotlin {
 
                 implementation(libs.kotlin.stdlib)
 
+                // Network
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.ktor.client.logging)
 
+                // DI
                 implementation(libs.koin.core)
             }
         }
@@ -59,5 +65,23 @@ kotlin {
                 implementation(libs.ktor.client.darwin)  // Engine for iOS
             }
         }
+    }
+}
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        load(file.inputStream())
+    }
+}
+
+val apiKey = localProperties.getProperty("NEWS_API_KEY") ?: ""
+
+buildkonfig {
+    packageName = "com.reza.multipress"
+
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, "NEWS_API_KEY", apiKey)
+        buildConfigField(FieldSpec.Type.STRING, "BASE_URL", "https://newsapi.org/v2/")
     }
 }
