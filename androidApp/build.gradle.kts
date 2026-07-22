@@ -13,6 +13,9 @@ kotlin {
 dependencies {
     implementation(projects.sharedLogic)
 
+    // di
+    implementation(libs.koin.android)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
